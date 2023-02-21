@@ -49,6 +49,10 @@ public class SiriXml {
         }
     }
 
+    public static void setJaxbContext(JAXBContext newJaxbContext){
+        jaxbContext = newJaxbContext;
+    }
+
     public static Siri parseXml(String xml) throws JAXBException, XMLStreamException {
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         
