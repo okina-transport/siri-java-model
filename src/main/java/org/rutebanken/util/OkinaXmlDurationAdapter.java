@@ -15,7 +15,9 @@
 
 package org.rutebanken.util;
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+
+import jakarta.xml.bind.annotation.adapters.XmlAdapter;
+
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.DatatypeFactory;
 
