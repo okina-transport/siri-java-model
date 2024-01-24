@@ -35,6 +35,7 @@ public class ZonedDateTimeAdapter {
      */
     public static ZonedDateTime parse(String dateTime) {
         ZonedDateTime parsed;
+        ZoneId zoneId= ZoneId.of(System.getProperty("anshar.default.time.zone"));
         if (dateTime!= null && isNumeric(dateTime)) {
             parsed = parse(Long.valueOf(dateTime));
         } else {
@@ -42,11 +43,11 @@ public class ZonedDateTimeAdapter {
                 parsed = ZonedDateTime.parse(dateTime);
             } catch (DateTimeParseException e) {
                 LocalDateTime parse1 = LocalDateTime.parse(dateTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-                parsed = ZonedDateTime.ofLocal(parse1, ZoneId.systemDefault(), ZoneOffset.ofHours(0));
+                parsed = ZonedDateTime.ofLocal(parse1, zoneId, ZoneOffset.ofHours(0));
 
             }
         }
-        return parsed.withZoneSameInstant(ZoneId.systemDefault());
+        return parsed.withZoneSameInstant(zoneId);
     }
 
     private static boolean isNumeric(String str)
