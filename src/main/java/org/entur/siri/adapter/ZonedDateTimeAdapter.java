@@ -35,7 +35,7 @@ public class ZonedDateTimeAdapter {
      */
     public static ZonedDateTime parse(String dateTime) {
         ZonedDateTime parsed;
-        ZoneId zoneId = ZoneId.of(System.getProperty("anshar.default.time.zone"));
+        ZoneId zoneId = ZoneId.of(System.getProperty("default.time.zone")) != null ? ZoneId.of(System.getProperty("default.time.zone")) : ZoneOffset.UTC;
         if (dateTime!= null && isNumeric(dateTime)) {
             parsed = parse(Long.valueOf(dateTime));
         } else {
