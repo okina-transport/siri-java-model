@@ -15,55 +15,30 @@
 
 package org.entur.siri.adapter;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Objects;
 
 public class ZonedDateTimeAdapter {
 
     /**
-     * Parses dateTime to ZonedDateTime with optional zone
+     * Parses dateTime to ZonedDateTime with optional zone.
+     * If Zone is not provided, local system default is used.
      *
-     * If Zone is not provided, local system default is used
-     *
-     * @param dateTime May be either ISO-formatted string, or timestamp in milliseconds
-     * @return
+     * @param dateTime ISO-formatted string
      */
     public static ZonedDateTime parse(String dateTime) {
+        Objects.requireNonNull(dateTime, "dateTime");
         ZonedDateTime parsed;
-        ZoneId zoneId = ZoneId.of(System.getProperty("default.time.zone")) != null ? ZoneId.of(System.getProperty("default.time.zone")) : ZoneOffset.UTC;
-        if (dateTime!= null && isNumeric(dateTime)) {
-            parsed = parse(Long.valueOf(dateTime));
-        } else {
-            try {
-                parsed = ZonedDateTime.parse(dateTime);
-            } catch (DateTimeParseException e) {
-                LocalDateTime parse1 = LocalDateTime.parse(dateTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-                parsed = ZonedDateTime.ofLocal(parse1, zoneId, ZoneOffset.ofHours(0));
+        try {
+            parsed = ZonedDateTime.parse(dateTime);
+        } catch (DateTimeParseException e) {
+            LocalDateTime parse1 = LocalDateTime.parse(dateTime, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+            parsed = ZonedDateTime.ofLocal(parse1, ZoneId.systemDefault(), ZoneOffset.ofHours(0));
 
-            }
         }
         return parsed.withZoneSameInstant(ZoneId.systemDefault());
     }
 
-    private static boolean isNumeric(String str)
-    {
-        return str.matches("\\d+");
-    }
-
-    /**
-     * Parses dateTime to ZonedDateTime with optional zone
-     *
-     * If Zone is not provided, local system default is used
-     *
-     * @param dateTime
-     * @return
-     */
-    private static ZonedDateTime parse(long dateTime) {
-        return ZonedDateTime.ofInstant(Instant.ofEpochSecond(dateTime), ZoneId.systemDefault());
-    }
 }
