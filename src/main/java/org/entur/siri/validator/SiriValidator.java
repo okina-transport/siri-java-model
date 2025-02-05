@@ -34,6 +34,7 @@ public class SiriValidator {
     private static JAXBContext siri13jaxbContext;
     private static JAXBContext siri14jaxbContext;
     private static JAXBContext siri20jaxbContext;
+    private static JAXBContext siri20idfm24jaxbContext;
     private static JAXBContext siri21jaxbContext;
 
     static {
@@ -59,6 +60,9 @@ public class SiriValidator {
         }
         if (siri21jaxbContext == null) {
             siri21jaxbContext = JAXBContext.newInstance(uk.org.siri.siri21.Siri.class);
+        }
+        if (siri20idfm24jaxbContext == null) {
+            siri20idfm24jaxbContext = JAXBContext.newInstance(uk.org.siri.siri20.Siri.class);
         }
     }
     /**
@@ -144,6 +148,7 @@ public class SiriValidator {
             case VERSION_1_4:
                 return siri14jaxbContext.createUnmarshaller();
             case VERSION_2_0:
+            case VERSION_2_0_IDFM_2_4:
                 return siri20jaxbContext.createUnmarshaller();
             case VERSION_2_1:
                 return siri21jaxbContext.createUnmarshaller();
@@ -166,6 +171,7 @@ public class SiriValidator {
                 path = "siri-1.4/xsd/siri.xsd";
                 break;
             case VERSION_2_0:
+            case VERSION_2_0_IDFM_2_4:
                 path = "siri-2.0/xsd/siri.xsd";
                 break;
             case VERSION_2_1:
@@ -178,5 +184,5 @@ public class SiriValidator {
         return SiriValidator.class.getClassLoader().getResource(path);
     }
 
-    public enum Version {VERSION_1_0, VERSION_1_3, VERSION_1_4, VERSION_2_0, VERSION_2_1}
+    public enum Version {VERSION_1_0, VERSION_1_3, VERSION_1_4, VERSION_2_0, VERSION_2_1, VERSION_2_0_IDFM_2_4}
 }
