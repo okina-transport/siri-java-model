@@ -17,7 +17,9 @@ package org.rutebanken.siri20.util;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
+import uk.org.siri.siri20.AnnotatedStopPointStructure;
 import uk.org.siri.siri20.Siri;
+import uk.org.siri.siri20.StopPointsDeliveryStructure;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -41,6 +43,20 @@ public class SiriJsonTest {
         while (xml.indexOf("  ") > 0) {
             xml = xml.replace("  ", "");
         }
+    }
+
+    @Test
+    public void test() throws Exception {
+        Siri s = new Siri();
+        StopPointsDeliveryStructure structure = new StopPointsDeliveryStructure();
+        AnnotatedStopPointStructure annotatedStopPointStructure = new AnnotatedStopPointStructure();
+        annotatedStopPointStructure.setUrl("http://www.google.com");
+        structure.getAnnotatedStopPointReves().add(annotatedStopPointStructure);
+        s.setStopPointsDelivery(structure);
+
+        String json = toJson(s);
+        System.out.println(json);
+
     }
 
 
