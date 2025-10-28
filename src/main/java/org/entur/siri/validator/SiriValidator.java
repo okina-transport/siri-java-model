@@ -148,6 +148,7 @@ public class SiriValidator {
                 return siri14jaxbContext.createUnmarshaller();
             case VERSION_2_0:
             case VERSION_2_0_IDFM_2_4:
+            case VERSION_2_0_FR_2_4:
                 return siri20jaxbContext.createUnmarshaller();
             case VERSION_2_1:
                 return siri21jaxbContext.createUnmarshaller();
@@ -171,6 +172,7 @@ public class SiriValidator {
                 break;
             case VERSION_2_0:
             case VERSION_2_0_IDFM_2_4:
+            case VERSION_2_0_FR_2_4:
                 path = "siri-2.0/xsd/siri.xsd";
                 break;
             case VERSION_2_1:
@@ -183,5 +185,5 @@ public class SiriValidator {
         return SiriValidator.class.getClassLoader().getResource(path);
     }
 
-    public enum Version {VERSION_1_0, VERSION_1_3, VERSION_1_4, VERSION_2_0, VERSION_2_1, VERSION_2_0_IDFM_2_4}
+    public enum Version {VERSION_1_0, VERSION_1_3, VERSION_1_4, VERSION_2_0, VERSION_2_1, VERSION_2_0_IDFM_2_4, VERSION_2_0_FR_2_4}
 }
