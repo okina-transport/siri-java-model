@@ -20,16 +20,15 @@ This ReadMe describes Changes to the SIRI schema up to  v2.0 version 2.0   since
 ========================
 Changes to  SIRI schema v2.0   since v1.4
 
- 2015.05.20 Bug fix (from SG7 feedback) SIRI 2.0o Draft2
-	* siri_situationExchange_service.xsd FilterByKeword corrected to FilterByKeyword
-	* siri_estimatedVehicleJourney-v2.0.xsd coorections of typo in comments and documentation
-	
- 2015.05.13 Bug fix (from SG7 feedback) SIRI 2.0o Draft2
+ 2015.05.13 Bug fix (from french feedback) SIRI 2.0p
+	* replacement of "NotifyExtension" (appearing 10 times) with "SiriExtension" in siri_wsConsumer.wsdl in order to ensure compatibility with the Document version
+
+ 2015.05.13 Bug fix (from SG7 feedback) SIRI 2.0o
  	* update annotation in siri.xsd and and siri_all_functionalService.xsd (to add <Requires> siri__facilityMonitoring_service.xsd ...)
 	* siri.xsd: move of a SituationExchangeDelivery, renamed IncludedSituationExchangeDelivery, before other complemented service deliveries.
 	* siri_situationExchange_service.xsd: addition of IncludedSituationExchangeDelivery element
 
- 2015.05.11 Bug fix (from SG7 skype meeting on May 11th 2015) SIRI 2.0o Draft1
+ 2015.05.11 Bug fix (from SG7 skype meeting on May 11th 2015) SIRI 2.0o
  	* Allow multiple tags within an extension (reapply lost chnage from 2012.06.18 SIRI 2.0d) - siri_utility-v1.1.xsd
 	* siri_estimatedVehicleJourney-v2.0.xsd : in EstimatedTimetableAlterationGroup, addition of FramedVehicleJourneyRef as an alternative to DatedVehicleJourneyRef (choice) and deprecation of DatedVehicleJourneyRef and EstimatedVehicleJourneyCode
 	* siri_datedVehicleJourney-v2.0.xsd : DatedVehicleJourneyCode is now optional
@@ -49,7 +48,7 @@ Changes to  SIRI schema v2.0   since v1.4
  2014.11.17 Correction (from french feedback)
  	* [fr] fix RPC-Document compatibility issue for GetSiri in Document WSDL  (siri_wsProducer-Services.xsd): addition of Request/Answer wrapper
  	* [fr] fix WSDL Document issue: GetCapability was using Answer instead of Request (siri_wsProducer-DiscoveryCapability.xsd)
- 	* [fr] fix RPC-Document compatibility issue for LinesDiscovery,ConnectionLinksDiscovery,StopPointsDiscovery in Document WSDL (siri_wsProducer-DiscoveryCapability.xsd): deletion of useless «xxxAnswerInfo» wrapper
+ 	* [fr] fix RPC-Document compatibility issue for LinesDiscovery,ConnectionLinksDiscovery,StopPointsDiscovery in Document WSDL (siri_wsProducer-DiscoveryCapability.xsd): deletion of useless Â«xxxAnswerInfoÂ» wrapper
 
  2014.06.20 Correction and revisions from Stenungsund 
        [Part2]
@@ -121,7 +120,7 @@ emporal filter siri_situationExchaneg_service.xsd.
 	* [fr] EstimatedTimetable, COnnectionMonitoring  add detailed level to reqyest
 
 	* [fr] Make AdditionalVersionRefS to OperationalInfoGroup.
-	* [fr] Add JourneyPatternName The JourneyPatternInfoGroup.  
+	* [fr] Add JourneyPatternName TheÂ JourneyPatternInfoGroup.  
 	
  2013.02.11
 	* [SE]  Align documentation and XSD. See comments in individual xsd-files.
@@ -241,8 +240,8 @@ emporal filter siri_situationExchaneg_service.xsd.
 		[FR, MTA] Add Velocity to Journey & VelocityType x tx
 		
 	StopMonitoringRequest SIRI-SM
-		[VDV] Add   Minimum-StopVisits¬PerVia to STopMonitoringRequestPolicy x tx
-		[VDV] Add  HasMinimum-StopVisits¬Via  to STopMonitoringCapabilities x tx
+		[VDV] Add   Minimum-StopVisitsÂ¬PerVia to STopMonitoringRequestPolicy x tx
+		[VDV] Add  HasMinimum-StopVisitsÂ¬Via  to STopMonitoringCapabilities x tx
 		
 	StopMonitoringDelivery  SIRI-SM  
 		 [FR] Add Service Exception element
